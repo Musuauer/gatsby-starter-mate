@@ -29,12 +29,6 @@ const plugins = [
       accessToken: ACCESS_TOKEN,
     },
   },
-  {
-    resolve: 'gatsby-source-medium',
-    options: {
-      username: about.mediumUser || '@medium',
-    },
-  },
 ];
 
 if (ANALYTICS_ID) {
@@ -49,7 +43,6 @@ if (ANALYTICS_ID) {
 module.exports = {
   plugins,
   siteMetadata: {
-    isMediumUserDefined: !!about.mediumUser,
     deterministic: !!DETERMINISTIC,
   },
 };

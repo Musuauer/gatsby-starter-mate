@@ -2,53 +2,57 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { Project } from '../types';
 
 export type QueryResponse = {
-  contentfulAbout: {
+  allcontentfulProject: {
     projects: {
       id: string;
-      name: string;
+      title: string;
       description: string;
-      homepage: string;
-      repository: string;
-      publishedDate: string;
-      type: string;
-      logo: {
-        title: string;
-        image: {
-          src: string;
-        };
-      };
+      order: number;
+      label: string;
+      slug: string;
+      images: any;
+      thumbnail: any;
+
     }[];
   };
 };
 
 export const useProjectsQuery = (): Project[] => {
-  const { contentfulAbout } = useStaticQuery<QueryResponse>(graphql`
+  const { allcontentfulProject } = useStaticQuery<QueryResponse>(graphql`
     query ProjectsQuery {
-      contentfulAbout {
+      allcontentfulProject {
         projects {
           id
-          name
+          title
           description
-          homepage: projectUrl
-          repository: repositoryUrl
-          publishedDate(formatString: "YYYY")
-          type
-          logo {
-            title
-            image: resize(width: 200, quality: 100) {
-              src
+          order
+          label
+          slug
+          images {
+            id
+           localFile {
+              childImageSharp {
+               fluid(maxWidth: 960, quality: 85) {
+                ...GatsbyImageSharpFluid_withWebp
+                }
+             }
             }
           }
+          thumbnail {
+            id
+            localFile {
+               childImageSharp {
+                fluid(maxWidth: 960, quality: 85) {
+                 ...GatsbyImageSharpFluid_withWebp
+                 }
+              }
+             }
+          }
+
         }
       }
     }
   `);
 
-  return contentfulAbout.projects.map(({ logo, ...rest }) => ({
-    ...rest,
-    logo: {
-      alt: logo.title,
-      src: logo.image.src,
-    },
-  }));
+  return allcontentfulProject.projects.map( project => project )
 };

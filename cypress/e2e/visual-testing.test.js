@@ -6,12 +6,6 @@ describe('Visual Testing', () => {
   it('Main Page', () => {
     cy.visit('/');
 
-    cy.get('#home').scrollIntoView({ duration: 500 });
-    cy.get('#about').scrollIntoView({ duration: 500 });
-    cy.get('#projects').scrollIntoView({ duration: 500 });
-    cy.get('#writing').scrollIntoView({ duration: 500 });
-    cy.get('#footer').scrollIntoView({ duration: 500 });
-
     cy.waitForAnimations();
 
     cy.percySnapshot('Main Page Responsive', {

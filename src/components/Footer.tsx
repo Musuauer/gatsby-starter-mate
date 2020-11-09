@@ -5,7 +5,6 @@ import { Fade } from 'react-awesome-reveal';
 import SocialLink from './SocialLink';
 import Link from './Link';
 import { useSiteQuery } from '../queries/useSiteQuery';
-import { CONTENTFUL_URL, GATSBY_URL, NETLIFY_URL } from '../utils/constants';
 
 const Footer = () => {
   const { name, socialLinks } = useSiteQuery();
@@ -13,19 +12,6 @@ const Footer = () => {
   return (
     <Box p={[2, 3]} backgroundColor="primary" id="footer">
       <FooterContainer>
-        <Fade direction="left" triggerOnce>
-          <TextWrapper fontSize={[2, 3]}>
-            <span>{`${name} Portfolio - Powered by `}</span>
-            <Link href={GATSBY_URL}>Gatsby</Link>
-            <span>, </span>
-            <Link href={CONTENTFUL_URL}>Contentful</Link>
-            <span> and </span>
-            <Link href={NETLIFY_URL}>Netlify</Link>{' '}
-            <span role="img" aria-label="heart">
-              ❤️
-            </span>
-          </TextWrapper>
-        </Fade>
         <Flex>
           <Fade direction="right" triggerOnce cascade damping={0.5}>
             {socialLinks.map((sl) => (
