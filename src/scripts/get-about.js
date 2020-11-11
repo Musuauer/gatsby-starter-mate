@@ -1,4 +1,4 @@
-import { createClient, Entry } from 'contentful';
+import { createClient, Entry } from 'contentful'
 import fs from 'fs';
 import path from 'path';
 import dotenv from 'dotenv';

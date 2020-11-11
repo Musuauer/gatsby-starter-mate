@@ -1,4 +1,3 @@
-const about = require('./about.json');
 
 require('dotenv').config();
 
@@ -12,11 +11,9 @@ const plugins = [
   {
     resolve: 'gatsby-plugin-manifest',
     options: {
-      name: `${about.name} Portfolio`,
-      short_name: about.name,
+      name: `Guillermo Gudiño Portfolio`,
+      short_name: 'Guillermo Gudiño',
       start_url: '/',
-      background_color: about.colors.background,
-      theme_color: about.colors.primary,
       display: 'minimal-ui',
       icon: 'media/icon.png',
     },
